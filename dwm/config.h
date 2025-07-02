@@ -30,7 +30,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 0,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 0,       0,           -1 },
 };
 
 /* layout(s) */
@@ -101,11 +101,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
 	{0, 														XK_Print,  spawn, 				 SHCMD("flameshot full -c") },
-	{ MODKEY|ShiftMask,             XK_s,      spawn, 				 SHCMD("flameshot gui"),
+	{ MODKEY|ShiftMask,             XK_s,      spawn, 				 SHCMD("flameshot gui") },
 
-	{ ControlMask|ShiftMask,        XK_Escape, spawn, 			   SHCMD("~/dwm-config2/scripts/power-menu.sh"),
-	{ MODKEY,                       XK_space,  spawn, 				 SHCMD("~/dwm-config2/scripts/change_language.sh"),
-	{ ControlMask|ShiftMask,        XK_d,      spawn, 				 SHCMD("rofi -show drub -show-icons"),
+	{ ControlMask|ShiftMask,        XK_Escape, spawn, 			   SHCMD("~/dwm-config2/scripts/power-menu.sh") },
+	{ MODKEY,                       XK_space,  spawn, 				 SHCMD("~/dwm-config2/scripts/change_language.sh") },
+	{ ControlMask|ShiftMask,        XK_d,      spawn, 				 SHCMD("rofi -show drun -show-icons") },
 
 	{0, 														XF86XK_AudioMute, 				 spawn, 	 			SHCMD("pactl set-sink-mute 0 toogle && pkill -RTMIN+1 dwmblocks") },
 	{0, 														XF86XK_AudioLowerVolume, 	 spawn, 	 			SHCMD("pactl set-sink-volume 0 -3% && pkill -RTMIN+1 dwmblocks") },

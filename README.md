@@ -7,7 +7,7 @@
 ## 📦 Зависимости
 Установите перед сборкой:
 ```bash
-sudo pacman -S base base-devel git dmenu alacritty feh ttf-font-awesome rofi pipewire
+sudo pacman -S base base-devel git dmenu alacritty feh ttf-font-awesome rofi pipewire brignessctl picom
 ```
 
 
@@ -48,12 +48,6 @@ echo 'exec dwm' >> ~/.xinitrc
 
 ---
 
-## 🖼️ Обои
-1. Поместите ваше изображение в:  
-   `~/dwm-config2/dwm/wallpapers/`
-2. Переименуйте в `wp.jpg`
-
----
 
 ## 🔧 Кастомизация
 ### 1. Смена терминала
