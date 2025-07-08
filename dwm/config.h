@@ -76,6 +76,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+#include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -87,6 +88,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
@@ -119,9 +122,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_space,  spawn, 				 SHCMD("~/dwm-config2/scripts/change_language.sh") },
 	{ ControlMask|ShiftMask,        XK_d,      spawn, 				 SHCMD("rofi -show drun -show-icons") },
 
-	{0, 														XF86XK_AudioMute, 				 spawn, 	 			SHCMD("pactl set-sink-mute 0 toogle && pkill -RTMIN+1 dwmblocks") },
-	{0, 														XF86XK_AudioLowerVolume, 	 spawn, 	 			SHCMD("pactl set-sink-volume 0 -3% && pkill -RTMIN+1 dwmblocks") },
-	{0, 														XF86XK_AudioRaiseVolume, 	 spawn, 	 			SHCMD("pactl set-sink-volume 0 +3% && pkill -RTMIN+1 dwmblocks") },
+	{0, 														XF86XK_AudioMute, 				 spawn, 	 			SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+1 dwmblocks") },
+	{0, 														XF86XK_AudioLowerVolume, 	 spawn, 	 			SHCMD("pactl set-sink-volume 0 -5% && pkill -RTMIN+1 dwmblocks") },
+	{0, 														XF86XK_AudioRaiseVolume, 	 spawn, 	 			SHCMD("pactl set-sink-volume 0 +5% && pkill -RTMIN+1 dwmblocks") },
 	{0, 														XF86XK_MonBrightnessUp, 	 spawn, 	 			SHCMD("brightnessctl set +10%") },
 	{0, 														XF86XK_MonBrightnessDown,  spawn, 	 			SHCMD("brightnessctl set 10%-") },
 	
